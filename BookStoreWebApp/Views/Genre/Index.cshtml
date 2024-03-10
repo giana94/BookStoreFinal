@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BookStore.Models.Genre>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Genres</h1>
+
+<p>
+    <a asp-action="Create">Create New Genre</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Genre Description
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenreType)
+            </td>
+            <td>
+                <a asp-controller="Genre" asp-action="Edit" asp-route-id="@item.GenreId">Edit</a> |
+                <a asp-controller="Genre" asp-action="Delete" asp-route-id="@item.GenreId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
